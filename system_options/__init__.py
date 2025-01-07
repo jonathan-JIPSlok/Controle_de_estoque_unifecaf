@@ -13,6 +13,7 @@ def __init__():
 def add_product(data_products: dict) -> None:
     """
     Adiciona um produto ao inventário.
+    :param data_products: Dicionário que armazena os produtos do inventário.
     """
     try:
         cabecalho("Adicionar Produtos")
@@ -38,6 +39,7 @@ def add_product(data_products: dict) -> None:
 def update_product(data_products: dict) -> None:
     """
     Atualiza um produto do inventário.
+    :param data_products: Dicionário que armazena os produtos do inventário.
     """
     user = ''
     while user != 'sair':
@@ -101,12 +103,37 @@ def update_product(data_products: dict) -> None:
 def remove_product(data_products: dict) -> None:
     """
     Remove um produto do inventário.
+    :param data_products: Dicionário que armazena os produtos do inventário.
     """
-    pass
+    user = ''
+    while user != 'sair':
+        cabecalho("Remover Produtos")
+
+        # Exibe os produtos disponíveis para remoção
+        list_products(data_products)
+        print("\n[sair] para voltar ao menu principal\n")
+
+        user = input("Selecione o produto que deseja remover: ")
+        try:
+            if user == 'sair':
+                break
+            elif user.isnumeric():
+                produto = list(data_products.keys())[int(user)]
+                del data_products[produto]
+                print("Produto removido com sucesso!")
+                sleep(2)
+            else:
+                print("Opção inválida! Tente novamente.")
+                sleep(2)
+        except IndexError:
+            print('Valor inválido! Tente novamente.')
+            sleep(2)
 
 def list_products(data_products: dict, detalhado = False) -> None:
     """
     Lista os produtos do inventário.
+    :param data_products: Dicionário que armazena os produtos do inventário.
+    :param detalhado: Parâmetro que define se a listagem será detalhada ou não.
     """
     if detalhado == False:
         # Exibe os produtos disponíveis no inventário
@@ -114,7 +141,6 @@ def list_products(data_products: dict, detalhado = False) -> None:
             print(f'[{indice}] - {product}')
     
     elif detalhado == True:
-        cabecalho("Produtos em Estoque")
         # Exibe os produtos disponíveis no inventário detalhadamente
         for indice, product in enumerate(data_products.keys()):
             print(f'[{indice}] - {product}')

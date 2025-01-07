@@ -11,7 +11,7 @@ import os
 # modulo que contem a interface de opções do sistema.
 from system_interface import user_options, cabecalho
 
-from system_options import add_product, update_product, list_products
+from system_options import add_product, update_product, list_products, remove_product
 
 # Constants
 DATA_FILE = 'data/inventory.txt' # Define o caminho do arquivo de dados
@@ -36,8 +36,9 @@ while user != "sair":
     elif user == '2':
         update_product(DATA_PRODUCTS) # Atualiza um produto do inventário
     elif user == '3':
-        pass
+        remove_product(DATA_PRODUCTS) # Remove um produto do inventário
     elif user == '4':
+        cabecalho("Produtos em Estoque")
         list_products(DATA_PRODUCTS, True) # Lista os produtos do inventário detalhadamente
     
     else: # Caso o usuário digite uma opção não disponível.
