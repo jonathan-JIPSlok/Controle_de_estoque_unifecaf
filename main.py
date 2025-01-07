@@ -10,16 +10,16 @@ import os
 
 # modulo que contem a interface de opções do sistema.
 from system_interface import user_options, cabecalho
-
 from system_options import add_product, update_product, list_products, remove_product
-
-# Constants
-DATA_FILE = 'data/inventory.txt' # Define o caminho do arquivo de dados
-SYSTEM_OPTIONS = ('Registrar vendas', 'Adicionar Produto', 'Atualizar Produto', 'Remover Produto', 'Listar Produtos') # Define as opções do sistema
-DATA_PRODUCTS = {} # Dicionario que armazena os produtos do inventário
+from system_options.data_manipuling import get_data, save_data
 
 # Cria o diretório data com 'os.mkdir' caso ele não exista que é verificado por 'os.path.exists'
 os.mkdir('data') if not os.path.exists('data') else None
+
+# Constants
+DATA_FILE = 'data/inventory.json' # Define o caminho do arquivo de dados do iventário.
+SYSTEM_OPTIONS = ('Registrar vendas', 'Adicionar Produto', 'Atualizar Produto', 'Remover Produto', 'Listar Produtos') # Define as opções do sistema
+DATA_PRODUCTS = get_data(DATA_FILE) # Dicionario que armazena os produtos do inventário
 
 user = ""
 while user != "sair":
@@ -27,6 +27,7 @@ while user != "sair":
 
     user = user_options(SYSTEM_OPTIONS)
     if user == 'sair':
+        save_data(DATA_FILE, DATA_PRODUCTS) # Salva os dados do inventário no arquivo
         print('Saindo do Sistema...')
         break
     elif user == '0':

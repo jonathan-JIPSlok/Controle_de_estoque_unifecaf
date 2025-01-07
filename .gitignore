@@ -1,2 +1,4 @@
 system_interface/__pycache__/__init__.cpython-313.pyc
 system_options/__pycache__/__init__.cpython-313.pyc
+data/inventory.json
+system_options/__pycache__/data_manipuling.cpython-313.pyc

@@ -24,7 +24,7 @@ def add_product(data_products: dict) -> None:
         if not product_name in data_products.keys(): # Verifica se o produto já existe no inventário
             
             #Adiciona o produto ao dicionário de produtos
-            data_products[product_name] = {'Preço': product_price, 'Quantidade': product_quantity}
+            data_products[product_name] = {'Preco': product_price, 'Quantidade': product_quantity}
             print("Produto adicionado com sucesso!")
             sleep(2)
         
@@ -62,7 +62,7 @@ def update_product(data_products: dict) -> None:
                 # mostra o produto selecionado
                 print("-" * 50)
                 print(f'Produto selecionado: {produto}')
-                print(f'Preço: R${data_products[produto]['Preço']:.2f}')
+                print(f'Preço: R${data_products[produto]['Preco']:.2f}')
                 print(f'Quantidade: {data_products[produto]['Quantidade']}')
                 print("-" * 50)
 
@@ -141,7 +141,7 @@ def list_products(data_products: dict, detalhado = False) -> None:
         # Exibe os produtos disponíveis no inventário detalhadamente
         for indice, product in enumerate(data_products.keys()):
             print(f'[{indice}] - {product}')
-            print(f'preço do produto: R${data_products[product]["Preço"]:.2f}')
+            print(f'preço do produto: R${data_products[product]["Preco"]:.2f}')
             print(f'Quantidade em estoque: {data_products[product]["Quantidade"]}')
             print('-' * 50)
             print('\n')
