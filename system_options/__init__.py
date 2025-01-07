@@ -17,7 +17,7 @@ def add_product(data_products: dict) -> None:
     """
     try:
         cabecalho("Adicionar Produtos")
-        product_name = input('Nome do Produto: ').lower()
+        product_name = input('Nome do Produto: ').lower().strip() # Converte o nome do produto para minúsculo e remove os espaços em branco
         product_price = float(input('Preço do Produto: ').replace(',', '.')) # Substitui a vírgula por ponto caso o usuário digite , ao invés de .
         product_quantity = int(input('Quantidade do Produto: '))
 
@@ -113,20 +113,17 @@ def remove_product(data_products: dict) -> None:
         list_products(data_products)
         print("\n[sair] para voltar ao menu principal\n")
 
-        user = input("Selecione o produto que deseja remover: ")
-        try:
-            if user == 'sair':
-                break
-            elif user.isnumeric():
-                produto = list(data_products.keys())[int(user)]
-                del data_products[produto]
-                print("Produto removido com sucesso!")
-                sleep(2)
-            else:
-                print("Opção inválida! Tente novamente.")
-                sleep(2)
-        except IndexError:
-            print('Valor inválido! Tente novamente.')
+        user = input("digite o nome do produto que deseja remover: ").lower().strip()
+        if user == 'sair':
+            break
+        elif data_products.get(user, "Produto não encontrado") == "Produto não encontrado":
+            #Verifica se o produto existe no inventário
+            print("Produto não encontrado!")
+            sleep(2)
+        else:
+            # Remove o produto do inventário
+            del data_products[user]
+            print("Produto removido com sucesso!")
             sleep(2)
 
 def list_products(data_products: dict, detalhado = False) -> None:
@@ -148,4 +145,4 @@ def list_products(data_products: dict, detalhado = False) -> None:
             print(f'Quantidade em estoque: {data_products[product]["Quantidade"]}')
             print('-' * 50)
             print('\n')
-        input("Pressione Enter para voltar ao menu principal")
+        input("Pressione Enter para voltar ao menu principal ...")
