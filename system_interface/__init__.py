@@ -25,11 +25,11 @@ def user_options(options: tuple) -> str:
     return selected_option
 
 
-def cabecalho() -> None:
+def cabecalho(titulo = "Controle de Estoque") -> None:
     """
     Exibe o cabeçalho do sistema.
     """
     system('cls') # Limpa a tela do terminal
     print('-' * 70)
-    print(f"\t Controle de Estoque \t Data: {datetime.today().date()}")
+    print(f"\t {titulo} \t Data: {datetime.today().date()}")
     print('-' * 70)

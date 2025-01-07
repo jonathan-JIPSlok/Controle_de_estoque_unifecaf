@@ -1,5 +1,8 @@
+from os import system
+
 from time import sleep
 
+from system_interface import cabecalho
 
 def __init__():
     """
@@ -12,7 +15,8 @@ def add_product(data_products: dict) -> None:
     Adiciona um produto ao inventário.
     """
     try:
-        product_name = input('Nome do Produto: ')
+        cabecalho("Adicionar Produtos")
+        product_name = input('Nome do Produto: ').lower()
         product_price = float(input('Preço do Produto: ').replace(',', '.')) # Substitui a vírgula por ponto caso o usuário digite , ao invés de .
         product_quantity = int(input('Quantidade do Produto: '))
 
@@ -37,13 +41,61 @@ def update_product(data_products: dict) -> None:
     """
     user = ''
     while user != 'sair':
-        print('Produtos disponiveis para atualização:')
+        cabecalho("Atualizar Produtos")
 
         # Exibe os produtos disponíveis para atualização
         list_products(data_products)
         
-        print("[sair] para voltar ao menu principal")
+        print("\n[sair] para voltar ao menu principal\n")
         user = input("Selecione o produto que deseja atualizar: ")
+
+        try:
+            if user == 'sair':
+                break
+
+            elif user.isnumeric():
+                system('cls')
+                produto = list(data_products.keys())[int(user)]
+
+                # mostra o produto selecionado
+                print("-" * 50)
+                print(f'Produto selecionado: {produto}')
+                print(f'Preço: R${data_products[produto]['Preço']:.2f}')
+                print(f'Quantidade: {data_products[produto]['Quantidade']}')
+                print("-" * 50)
+
+                # menu de opções
+                print("[1] - Atualizar preço do produto")
+                print("[2] - Atualizar quantidade do produto")
+                print("[sair] - Voltar ao menu principal\n")
+
+                user = input("Selecione a opção desejada: ")
+
+                if user == 'sair': break
+
+                elif user == '1': # Atualiza o preço do produto
+                    data_products[produto]['Preço'] = float(input("Digite o novo preço do produto:"))
+                    print("Produto atualizado com sucesso!")
+                    sleep(2)
+
+                elif user == '2': # Atualiza a quantidade do produto
+                    data_products[produto]['Quantidade'] = int(input("Digite a nova quantidade do produto:"))
+                    print("Produto atualizado com sucesso!")
+                    sleep(2)
+
+                else:
+                    print("Opção inválida! Tente novamente.")
+                    sleep(2)
+
+            else: # Caso o usuário digite uma opção não disponível que não seja um número.
+                print("Opção inválida! Tente novamente.")
+                sleep(2)
+        except IndexError: # Trata o erro caso o usuário digite um número que não corresponda a nenhum produto.
+            print("Opção inválida! Tente novamente.")
+            sleep(2)
+        except ValueError:
+            print('Valor inválido! Tente novamente.')
+            sleep(2)
 
 
 def remove_product(data_products: dict) -> None:
