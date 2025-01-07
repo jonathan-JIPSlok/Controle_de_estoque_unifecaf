@@ -40,8 +40,22 @@ def update_product(data_products: dict) -> None:
         print('Produtos disponiveis para atualização:')
 
         # Exibe os produtos disponíveis para atualização
-        for indice, product in enumerate(data_products.keys()):
-            print(f'[{indice}] {product}')
+        list_products(data_products)
         
         print("[sair] para voltar ao menu principal")
         user = input("Selecione o produto que deseja atualizar: ")
+
+
+def remove_product(data_products: dict) -> None:
+    """
+    Remove um produto do inventário.
+    """
+    pass
+
+def list_products(data_products: dict) -> None:
+    """
+    Lista os produtos do inventário.
+    """
+    # Exibe os produtos disponíveis no inventário
+    for indice, product in enumerate(data_products.keys()):
+        print(f'[{indice}] - {product}')
