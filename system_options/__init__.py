@@ -104,10 +104,22 @@ def remove_product(data_products: dict) -> None:
     """
     pass
 
-def list_products(data_products: dict) -> None:
+def list_products(data_products: dict, detalhado = False) -> None:
     """
     Lista os produtos do inventário.
     """
-    # Exibe os produtos disponíveis no inventário
-    for indice, product in enumerate(data_products.keys()):
-        print(f'[{indice}] - {product}')
+    if detalhado == False:
+        # Exibe os produtos disponíveis no inventário
+        for indice, product in enumerate(data_products.keys()):
+            print(f'[{indice}] - {product}')
+    
+    elif detalhado == True:
+        cabecalho("Produtos em Estoque")
+        # Exibe os produtos disponíveis no inventário detalhadamente
+        for indice, product in enumerate(data_products.keys()):
+            print(f'[{indice}] - {product}')
+            print(f'preço do produto: R${data_products[product]["Preço"]:.2f}')
+            print(f'Quantidade em estoque: {data_products[product]["Quantidade"]}')
+            print('-' * 50)
+            print('\n')
+        input("Pressione Enter para voltar ao menu principal")
