@@ -63,6 +63,8 @@ class adicionar_items:
     def sales(self, data_products: dict, data_clients: dict) -> None:
         """
         Adiciona uma venda ao sistema.
+        :param data_products: Dicionário que armazena os produtos do inventário.
+        :param data_clients: Dicionário que armazena os clientes.
         """
         produtos = []
         try:
@@ -217,6 +219,7 @@ def list_items(data_items: dict, detalhado = False, tipo = 'produtos') -> None:
     Lista os items.
     :param data_items: Dicionário que armazena os produtos do inventário.
     :param detalhado: Parâmetro que define se a listagem será detalhada ou não.
+    :param tipo: Parâmetro que define o tipo de item a ser listado.
     """
     if detalhado == False:
         # Exibe os produtos disponíveis no inventário

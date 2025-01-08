@@ -1,10 +1,12 @@
-import os
-
 import json
 from time import sleep
 
 class DataManipuling:
     def __init__(self, data_file: str):
+        """
+        Classe que manipula os dados do sistema direto de um arquivo .json.
+        :param file: Caminho do arquivo.
+        """
         self.data_file = data_file
         pass
 

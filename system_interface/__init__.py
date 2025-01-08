@@ -1,12 +1,5 @@
 from os import system
 from datetime import datetime # modulo que permite trabalhar com data e hora
-
-def __init__():
-    """
-    Módulo que contém funções para manipular a interface do sistema.
-    """
-    pass
-
 def user_options(options: tuple) -> str:
     """
     Mostra um menu de opções para o usuário e solicita que ele selecione uma opção.
