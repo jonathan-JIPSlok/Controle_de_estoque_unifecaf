@@ -2,6 +2,7 @@
     Módulo principal para a aplicação Controle de Estoque Unifecaf.
     Este módulo serve como ponto de entrada para a aplicação, inicializando
     e gerenciando as funcionalidades principais do sistema de controle de estoque.
+    Inclui funções para adicionar, atualizar, remover produtos, gerenciar clientes e registrar vendas.
     Criado por: Jonathan Yuri
     github: https://github.com/jonathan-JIPSlok
 """
