@@ -1,29 +1,9 @@
 {
-    "jonathan yuri poli siqueira": [
+    "jonathan yuri": [
         {
-            "lanterna": {
-                "Quantidade": 12,
-                "Total": 1200.0
-            }
-        },
-        {
-            "mouse": {
-                "Quantidade": 2,
+            "laterna": {
+                "Quantidade": 1,
                 "Total": 200.0
-            }
-        }
-    ],
-    "yasmin silva": [
-        {
-            "mouse": {
-                "Quantidade": 2,
-                "Total": 200.0
-            }
-        },
-        {
-            "teclado": {
-                "Quantidade": 2,
-                "Total": 300.0
             }
         }
     ]
